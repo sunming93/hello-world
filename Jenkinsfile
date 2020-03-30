@@ -39,5 +39,16 @@ pipeline {
               sh 'docker run -p 8081:8080 hello-simple:test &'
             }
         }
+
+        stage('Approve of Deploy QA') {
+          steps {
+            input message: 'deploy to QA?'
+          }
+        }
+        stage('Deploy for QA') {
+          steps {
+            echo 'deploy to QA'
+          }
+        }
     }
 }
